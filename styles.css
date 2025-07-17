@@ -1,0 +1,254 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0f1923;
+    color: #ffffff;
+    cursor: none; /* Hide default cursor */
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, #3498db, #1abc9c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #94a3b8;
+}
+
+/* Main content layout */
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.chat-container {
+    background-color: rgba(16, 36, 59, 0.5);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+}
+
+.chat-history {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+}
+
+.user-input {
+    flex-grow: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(16, 36, 59, 0.7);
+    color: white;
+    resize: none;
+    height: 60px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+.user-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.4);
+}
+
+.generate-btn {
+    padding: 0 20px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(45deg, #3498db, #1abc9c);
+    color: white;
+    font-weight: bold;
+    cursor: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+.image-display {
+    background-color: rgba(16, 36, 59, 0.5);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.placeholder {
+    color: #94a3b8;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Footer styles */
+footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.api-info {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    opacity: 0.8;
+    padding: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom cursor styles */
+.custom-cursor,
+.custom-cursor-dot {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: screen;
+    will-change: transform;
+}
+
+.custom-cursor {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(52, 152, 219, 0.2);
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+    transition: transform 0.1s, width 0.3s, height 0.3s, background-color 0.3s;
+    transform: translate(-50%, -50%);
+}
+
+.custom-cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #3498db;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.8);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Input focus state */
+body.cursor-input .custom-cursor {
+    width: 2px;
+    height: 24px;
+    border-radius: 1px;
+    background-color: #3498db;
+    box-shadow: 0 0 12px rgba(52, 152, 219, 1);
+    animation: blink 1s infinite;
+}
+
+body.cursor-input .custom-cursor-dot {
+    opacity: 0;
+}
+
+/* Button hover state */
+body.cursor-button .custom-cursor {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(52, 152, 219, 0.3);
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.8);
+    transform: translate(-50%, -50%) scale(1.1);
+    animation: pulse 1.5s infinite;
+}
+
+body.cursor-button .custom-cursor-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #3498db;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 1);
+}
+
+/* Loading state */
+body.cursor-loading .custom-cursor {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(52, 152, 219, 0.3);
+    border-top: 3px solid #3498db;
+    background-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+body.cursor-loading .custom-cursor-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #1abc9c;
+    animation: pulse 1s infinite alternate;
+}
+
+/* Animations */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes pulse {
+    0% { 
+        transform: translate(-50%, -50%) scale(1); 
+        box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.1); 
+        box-shadow: 0 0 20px rgba(52, 152, 219, 0.8);
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1); 
+        box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+    }
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+    
+    .custom-cursor, .custom-cursor-dot {
+        display: none;
+    }
+    
+    body {
+        cursor: auto; /* Restore default cursor on mobile */
+    }
+} 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 图片生成器 - SiliconFlow 集成</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="cursor-default">
+    <div class="container">
+        <header>
+            <h1>AI 图片生成器</h1>
+            <p>与 AI 对话创建精美图片 - 由 SiliconFlow API 提供支持</p>
+        </header>
+        
+        <main>
+            <div class="chat-container">
+                <div class="chat-history" id="chatHistory">
+                    <!-- 聊天记录将显示在这里 -->
+                </div>
+                
+                <div class="input-container">
+                    <textarea id="userInput" placeholder="描述你想要创建的图片..." class="user-input"></textarea>
+                    <button id="generateBtn" class="generate-btn">生成图片</button>
+                </div>
+            </div>
+            
+            <div class="image-display" id="imageDisplay">
+                <div class="placeholder">你的 AI 生成图片将显示在这里</div>
+                <!-- 生成的图片将显示在这里 -->
+            </div>
+        </main>
+        
+        <footer>
+            <p class="api-info">本应用使用 SiliconFlow API 生成图片。点击右上角设置图标可更新 API 密钥。</p>
+        </footer>
+    </div>
+
+    <!-- 自定义光标元素 -->
+    <div class="custom-cursor" id="customCursor"></div>
+    <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
